@@ -59,8 +59,8 @@ class ProductTest < ActiveSupport::TestCase
 			price: 1,
 			image_url: "asd.jpg")
 
-		assert_equal "MyString", products(:one).title
-		assert_equal "MyString1", products(:two).title
+		# assert_equal "MyString", products(:one).title
+		# assert_equal "MyString1", products(:two).title
 		assert product.invalid?
 		assert_equal ["has already been taken"], product.errors["title"]
 	end
