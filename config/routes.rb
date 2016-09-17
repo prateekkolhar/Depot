@@ -1,5 +1,5 @@
 Depot::Application.routes.draw do
-  resources :productbs
+
 
   resources :products
 
