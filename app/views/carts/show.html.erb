@@ -1,0 +1,47 @@
+<%if notice %>
+<p id="notice"><%= notice %></p>
+<%end%>
+
+<h2>
+	Your Pragmatic Cart
+</h2>
+
+<table>
+	
+	<% @cart.line_items.each do |item| %>
+
+		<tr>
+			
+			<td>
+				<%= button_to '-', line_item_path(item.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+			</td>
+			<td>
+				<%= item.quantity %> &times 
+			</td>
+			<td>
+				<%= button_to '+', line_items_path(product_id: item.product_id) %>
+			</td>
+			<td>
+				<%= item.product.title %>
+			</td>
+
+			<td calss="item_price">
+				<%= number_to_currency(item.total_price) %>
+			</td>
+		</tr>
+	<% end %>
+	<tr class ="total_line">
+		<td colspan="4"> 
+			Total
+		</td>
+		<td class = "total_cell">
+			<%= number_to_currency(@cart.total_price)%>
+			
+		</td>
+
+	</tr>
+
+</table>
+
+<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: 'Are you sure?'} %>
+
